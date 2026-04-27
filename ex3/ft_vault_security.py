@@ -5,18 +5,18 @@ def secure_archive(
 ) -> tuple[bool, str]:
     try:
         if action == "read":
-            with open(file_name, "r") as file_obj:
-                return True, file_obj.read()
+            with open(file_name, "r") as f:
+                return True, f.read()
 
         if action == "write":
-            with open(file_name, "w") as file_obj:
-                file_obj.write(content)
+            with open(file_name, "w") as f:
+                f.write(content)
             return True, "Content successfully written to file"
 
         return False, "Invalid action"
 
-    except Exception as error:
-        return False, str(error)
+    except Exception as e:
+        return False, str(e)
 
 
 def main() -> None:

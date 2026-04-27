@@ -1,28 +1,27 @@
 import sys
-import typing
 
 
 def main() -> None:
-    file_obj: typing.IO[str]
-
     if len(sys.argv) != 2:
         print("Usage: ft_ancient_text.py <file>")
         return
 
-    file_name: str = sys.argv[1]
+    file_name = sys.argv[1]
 
     print("=== Cyber Archives Recovery ===")
     print(f"Accessing file '{file_name}'")
 
     try:
-        file_obj = open(file_name, "r")
+        f = open(file_name, "r")
+        content = f.read()
+        f.close()
+
         print("---")
-        print(file_obj.read(), end="")
+        print(content, end="")
         print("---")
-        file_obj.close()
         print(f"File '{file_name}' closed.")
-    except Exception as error:
-        print(f"Error opening file '{file_name}': {error}")
+    except Exception as e:
+        print(f"Error opening file '{file_name}': {e}")
 
 
 if __name__ == "__main__":
